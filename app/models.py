@@ -49,3 +49,31 @@ class Subject(db.Model):
 
     def __repr__(self):
         return "<Subject {} {} {} {}>".format(self.subject_id, self.class_id, self.teacher_id, self.name)
+
+
+
+class Teacher(db.Model):
+    __tablename__ = 'Teacher'
+
+    teacher_id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(30), nullable=False)
+    surname = db.Column(db.String(30), nullable=False)
+    mail = db.Column(db.String(80), nullable=False)
+    login = db.Column(db.String(250), nullable=False)
+    password = db.Column(db.String(250), nullable=False)
+    birth_date = db.Column(db.Date, nullable=False)
+
+    def __repr__(self):
+        return "<Teacher {} {} {} {} {} {}>".format(self.first_name, self.surname, self.mail, self.login, self.password, self.birth_date)
+
+
+class Grade(db.Model):
+    __tablename__ = 'Grade'
+
+    grade_id = db.Column(db.Integer, primary_key=True)
+    student_id = db.Column(db.Integer, db.ForeignKey('Student.student_id'))
+    subject_id = db.Column(db.Integer, db.ForeignKey('Subject.subject_id'))
+    value = db.Column(db.Integer, nullable=True)
+
+    def __repr__(self):
+        return "<Grade {}>".format(self.value)
