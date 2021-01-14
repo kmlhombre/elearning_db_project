@@ -38,3 +38,14 @@ class Parent(db.Model):
 
     def __repr__(self):
         return "<Parent {} {} {} {}>".format(self.login, self.password, self.first_name, self.surname)
+
+
+class Subject(db.Model):
+    __tablename__ = 'Subject'
+    subject_id = db.Column(db.Integer, primary_key=True)
+    class_id = db.Column(db.Integer, db.ForeignKey('Class.class_id'))
+    teacher_id = db.Column(db.Integer, db.ForeignKey('Teacher.teacher_id'))
+    name = db.Column(db.String(30), nullable=False)
+
+    def __repr__(self):
+        return "<Subject {} {} {} {}>".format(self.subject_id, self.class_id, self.teacher_id, self.name)
