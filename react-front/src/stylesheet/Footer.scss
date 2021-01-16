@@ -1,0 +1,13 @@
+$footerColor: #f8f9fa;
+
+.Footer {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: $footerColor;
+
+  &.-description {
+    text-align: center;
+    color: black;
+  }
+}
