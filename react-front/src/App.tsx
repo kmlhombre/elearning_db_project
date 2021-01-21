@@ -11,7 +11,8 @@ function App() {
   return (
     <div className="App">
       <NavbarComponent />
-      {isUser ? <Home /> : <Login />}
+      <div className="container">{isUser ? <Home /> : <Login />}</div>
+
       <FooterComponent />
     </div>
   );
