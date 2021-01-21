@@ -43,7 +43,7 @@ function LoginComponent() {
         <Form.Check
           type="radio"
           label="Parent"
-          name="group2"
+          name="personGroup"
           id="radioParent"
         />
       </div>
