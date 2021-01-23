@@ -1,18 +1,25 @@
 import React from "react";
-import "./stylesheet/App.scss";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import FooterComponent from "./components/FooterComponent";
-import Login from "./components/Login";
 import Home from "./components/Home";
+import LoginComponent from "./components/Login";
 import NavbarComponent from "./components/NavbarComponent";
+import "./stylesheet/App.scss";
 
 function App() {
-  const isUser = false;
-
   return (
     <div className="App">
       <NavbarComponent />
-      <div className="container">{isUser ? <Home /> : <Login />}</div>
-
+      <BrowserRouter>
+        <Switch>
+          <Route path="/home">
+            <Home />
+          </Route>
+          <Route path="/login">
+            <LoginComponent />
+          </Route>
+        </Switch>
+      </BrowserRouter>
       <FooterComponent />
     </div>
   );
