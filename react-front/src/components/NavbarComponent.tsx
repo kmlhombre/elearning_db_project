@@ -2,7 +2,7 @@ import React from "react";
 import { Nav } from "react-bootstrap";
 import Navbar from "react-bootstrap/Navbar";
 import { Router, Switch, Route } from "react-router-dom";
-import Home from "./Home";
+import Home from "./home/Home";
 import Settings from "./Settings";
 import { createBrowserHistory } from "history";
 

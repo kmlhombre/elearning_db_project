@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800");
+$borderColor: #988b8e;
+$babyBlue: rgb(197, 234, 250);
+
+.grade-container {
+  border: 1px solid $borderColor;
+  padding: 8px;
+  width: 450px;
+}
+
+.title-container {
+  background-color: $babyBlue;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.header {
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  font-weight: 500;
+  font-family: "Fira Sans", sans-serif;
+  font-size: calc(10px + 2vmin);
+}
+
+p {
+  font-family: "Fira Sans", sans-serif;
+  font-size: calc(12px + 0.2vmin);
+}
+
+.header-text {
+  padding: 8px;
+  border: 1px solid $borderColor;
+}
