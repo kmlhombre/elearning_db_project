@@ -27,6 +27,15 @@ class Student(Base):
     password = Column(String(250), nullable=False)
     birth_date = Column(Date, nullable=False)
 
+    def getPassword(self):
+        return self.password
+
+    def getLogin(self):
+        return self.login
+
+    def getId(self):
+        return self.student_id
+
     def __repr__(self):
         return "<Student {} {} {} {} {} {}>".format(self.first_name, self.surname, self.mail, self.login, self.password, self.birth_date)
 
@@ -35,6 +44,7 @@ class Parent(Base):
     __tablename__ = 'Parent'
 
     parent_id = Column(Integer, primary_key=True)
+    student_id = Column(Integer, ForeignKey('Student.student_id'))
     login = Column(String(250), nullable=False)
     password = Column(String(250), nullable=False)
     first_name = Column(String(30), nullable=False)
@@ -42,6 +52,15 @@ class Parent(Base):
 
     def __repr__(self):
         return "<Parent {} {} {} {}>".format(self.login, self.password, self.first_name, self.surname)
+
+    def getPassword(self):
+        return self.password
+
+    def getLogin(self):
+        return self.login
+
+    def getId(self):
+        return self.student_id
 
 
 class Teacher(Base):
@@ -57,6 +76,12 @@ class Teacher(Base):
 
     def __repr__(self):
         return "<Teacher {} {} {} {} {} {}>".format(self.first_name, self.surname, self.mail, self.login, self.password, self.birth_date)
+
+    def getPassword(self):
+        return self.password
+
+    def getLogin(self):
+        return self.login
 
 
 class Grade(Base):
