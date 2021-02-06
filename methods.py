@@ -56,7 +56,7 @@ def change_password(session, logged_user, password):
 
 def add_grade(session, logged_user):
     subjects = session.query(Subject).filter_by(teacher_id=logged_user.getId()).all()
-    if subjects is None:
+    if len(subjects) == 0:
         return "Blad systemu"
 
     sub_id = subject_menu(subjects)
@@ -79,7 +79,7 @@ def add_grade(session, logged_user):
 
 def edit_grade(session, logged_user):
     subjects = session.query(Subject).filter_by(teacher_id=logged_user.getId()).all()
-    if subjects is None:
+    if len(subjects) == 0:
         return "Blad systemu"
 
     sub_id = subject_menu(subjects)
@@ -164,7 +164,7 @@ def grade_menu(grades):
 
 def display_classes_grades(session, logged_user):
     subjects = session.query(Subject).filter_by(teacher_id=logged_user.getId()).all()
-    if subjects is None:
+    if len(subjects) == 0:
         return "Blad systemu"
 
     sub_id = subject_menu(subjects)
