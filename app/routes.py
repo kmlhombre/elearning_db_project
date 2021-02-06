@@ -3,7 +3,7 @@ from flask import url_for, flash, render_template
 from werkzeug.utils import redirect
 
 from app import app
-from app.models import Student, Parent, Teacher
+from app.models import Student, Parent, Teacher, Grade, Subject
 from flask_login import current_user, login_user, logout_user, login_required
 
 
@@ -64,4 +64,18 @@ def profile(login):
     elif current_user.login[0] == 'n':
         account = Teacher.query.filter_by(teacher_id=current_user.teacher_id).first_or_404()
 
-    return render_template('user.html')
+    return render_template('user.html', account=account)
+
+
+@app.routes('/grades')
+@login_required
+def grades_student(login):
+    student_id = current_user.login[1:]
+    grades = Grade.query(Subject.name, Grade.value).join(Subject, Subject.subject_id == Grade.subject_id).filter_by(student_id=student_id)
+    return render_template('grades.html', grades=grades)
+
+
+@app.route('/addGrade')
+@login_required
+def add_grade():
+    form = GetForm

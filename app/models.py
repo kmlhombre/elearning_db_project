@@ -75,7 +75,6 @@ class Subject(db.Model):
         return "<Subject {} {} {} {}>".format(self.subject_id, self.class_id, self.teacher_id, self.name)
 
 
-
 class Teacher(db.Model):
     __tablename__ = 'Teacher'
 
