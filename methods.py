@@ -175,7 +175,7 @@ def display_classes_grades(session, logged_user):
     return all_grades
 
 
-def mass_change_of_passowords(session):
+def mass_change_of_passwords(session):
     students = session.query(Student).all()
     for student in students:
         student.password = generate_password_hash(student.password)
