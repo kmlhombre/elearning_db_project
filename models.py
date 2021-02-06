@@ -83,6 +83,9 @@ class Teacher(Base):
     def getLogin(self):
         return self.login
 
+    def getId(self):
+        return self.teacher_id
+
 
 class Grade(Base):
     __tablename__ = 'Grade'
