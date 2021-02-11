@@ -3,7 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy import func
 
 
-def login(session, login, password):
+def login_user(session, login, password):
     l = session.query(Student).filter_by(login=login).first()
     logged_status = "Student"
     if l is None:
@@ -18,7 +18,7 @@ def login(session, login, password):
     password = generate_password_hash(password)
     password_to_check = l.getPassword()
 
-    if password == check_password_hash(password_to_check):
+    if check_password_hash(password_to_check, password):
         return l, logged_status
     else:
         return "Niepoprawny login lub hasło"
