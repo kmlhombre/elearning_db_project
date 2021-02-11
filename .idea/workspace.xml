@@ -32,6 +32,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce814996-b10c-4012-87b3-20025d6a341b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/gui/addGradeWindow.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/changePasswordWindow.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/errorWindow.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/loggingWindow.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/parentWindow.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/studentWindow.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/successWindow.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/teacherWindow.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/methods.py" beforeDir="false" afterPath="$PROJECT_DIR$/methods.py" afterDir="false" />
     </list>
@@ -59,7 +68,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../elearning_gui-main" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -67,6 +76,36 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="elearning_db_project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -79,7 +118,9 @@
       <option name="presentableId" value="Default" />
       <updated>1612619372675</updated>
       <workItem from="1612619374595" duration="676000" />
-      <workItem from="1612620057811" duration="14467000" />
+      <workItem from="1612620057811" duration="14949000" />
+      <workItem from="1612968930784" duration="1196000" />
+      <workItem from="1613054372429" duration="4249000" />
     </task>
     <servers />
   </component>
@@ -99,13 +140,40 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="739" y="262" key="FileChooserDialogImpl" timestamp="1612620050330">
+    <state x="739" y="262" key="FileChooserDialogImpl" timestamp="1612969039578">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="739" y="262" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1612620050330" />
+    <state x="739" y="262" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1612969039578" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1613057219696">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613057219696" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1613057219696">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613057219696" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1613057219696">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613057219696" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1613057219696">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613057219696" />
+    <state x="461" y="165" key="SettingsEditor" timestamp="1612972161328">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1612972161328" />
+    <state x="245" y="-22" width="1392" height="1027" maximized="true" key="dock-window-1" timestamp="1613058376905">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="245" y="-22" width="1392" height="1027" maximized="true" key="dock-window-1/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1613058376905" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1612630045479">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1612630045479" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/elearning_db_project$main.coverage" NAME="main Coverage Results" MODIFIED="1613057100793" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
