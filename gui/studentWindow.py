@@ -2,6 +2,9 @@ import wx
 
 from gui.changePasswordWindow import changePasswordFrame
 
+from methods import display_grades, get_subjects
+from main import session
+
 class studentPanel(wx.Panel):
     def __init__(self, parent, logged_user):
         super().__init__(parent)
@@ -20,12 +23,15 @@ class studentPanel(wx.Panel):
             self.list_ctrl.InsertColumn(index, "Grade", width=60)
             self.list_ctrl.SetColumnWidth(index, 60)
 
+        self.subjects = []
         # TODO tutaj funkcja ktora pobiera dane tj.
         # przedmioty
-        # uczniow i oceny pierwszego przedmiotu
+        sub_tmp = get_subjects(session)
+        for subject in sub_tmp:
+            self.subjects.append(subject.name)
 
-        self.subjects = ["Math", "IT", "..."]
 
+        # self.subjects = ["Math", "IT", "..."]
         # dodawanie obiektow
         logout_button = wx.Button(self, label="Logout", size=(100, 50))
         logout_button.SetBackgroundColour('orange')
@@ -54,9 +60,12 @@ class studentPanel(wx.Panel):
         # czyszczenie tablicy
         self.list_ctrl.DeleteAllItems()
         # wypelnianie tablicy
-        self.list_ctrl.InsertItem(0, "Math")  # gdzie 0 to indeks wiersza
-        for index in range(1, 6):
-            self.list_ctrl.SetItem(0, index, str(index))  # gdzie index to indeks kolumny a str(index) to wartość(ocena)
+        self.list_ctrl.InsertItem(0, subject)  # gdzie 0 to indeks wiersza
+        grades = display_grades(session, self.logged_user_id, subject)
+        index = 0
+        for grade in grades:
+            self.list_ctrl.SetItem(0, index, str(grade.value))  # gdzie index to indeks kolumny a str(index) to wartość(ocena)
+            index += 1
 
 
 class studentFrame(wx.Frame):

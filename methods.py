@@ -28,14 +28,13 @@ def logout(logged_user):
     logged_user = None
 
 
-def display_grades(session, logged_user):
-    login = logged_user.getLogin()
+def display_grades(session, login, subject):
     l = session.query(Student).filter_by(login=login).first()
     if l is None:
         l = session.query(Teacher).filter_by(login=login).first()
     id = l.getId()
 
-    return session.query(Grade).join(Subject).filter_by(student_id=id).all()
+    return session.query(Grade).join(Subject).filter_by(student_id=id, name=subject).all()
 
 
 def change_password(session, logged_user, password):
@@ -187,3 +186,8 @@ def mass_change_of_passwords(session):
         teacher.password = generate_password_hash(teacher.password)
 
     session.commit()
+
+
+def get_subjects(session):
+    return session.query(Subject).all()
+
