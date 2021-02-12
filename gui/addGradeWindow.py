@@ -40,7 +40,7 @@ class addGradeFrame(wx.Frame):
 
     def on_press(self, event):
 
-        # TODO
+        # TODO update z Jędrzejem
         grade = self.text_ctrl3.GetValue()
 
         # TODO add grades to the database. Call proper function.
