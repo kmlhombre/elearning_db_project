@@ -167,7 +167,7 @@ def display_classes_grades(session, logged_user):
     sub_id = subject_menu(subjects)
     classes = session.query(Subject).join(Class).filter_by(subject_id=sub_id).all()
     class_id = classes_menu(classes)
-    all_grades = session.query(Student).join(Grade).filter_by(subject_id=sub_id, class_id=class_id).all()
+    all_grades = session.query(Student).join(Grade).filter(Subject.subject_id == sub_id, Student.class_id == class_id).all()
 
     return all_grades
 
@@ -191,3 +191,10 @@ def mass_change_of_passwords(session):
 def get_subjects(session):
     return session.query(Subject).all()
 
+
+def get_students(session, subject):
+    sub = session.query(Subject).filter_by(name=subject).first()
+    return session.query(Grade).join(Class).join(Subject).join(Student).filter(Subject.subject_id == sub.subject_id).all()
+
+def get_grades_of_student(session, subject, student_id):
+    return session.query(Grade).join(Class).join(Subject).join(Student).filter(Student.student_id == student_id, Subject.name == subject).all()

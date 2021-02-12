@@ -33,8 +33,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ce814996-b10c-4012-87b3-20025d6a341b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/addGradeWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui/addGradeWindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/parentWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui/parentWindow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/teacherWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui/teacherWindow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/methods.py" beforeDir="false" afterPath="$PROJECT_DIR$/methods.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +113,7 @@
       <workItem from="1612620057811" duration="14949000" />
       <workItem from="1612968930784" duration="1196000" />
       <workItem from="1613054372429" duration="7753000" />
-      <workItem from="1613140552684" duration="424000" />
+      <workItem from="1613140552684" duration="2817000" />
     </task>
     <servers />
   </component>
