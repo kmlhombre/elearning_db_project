@@ -1,8 +1,7 @@
 import wx
 
-from gui.successWindow import successFrame
+from successWindow import successFrame
 from methods import change_password
-from main import session
 
 
 class changePasswordFrame(wx.Frame):
@@ -41,7 +40,7 @@ class changePasswordFrame(wx.Frame):
         #TODO wpisac nowe haslo do bazy:
         newPassword = self.txt.GetValue()
 
-        change_password(session, self.logged_user_id, newPassword)
+        change_password(self.logged_user_id, newPassword)
 
         successFrame('Password has been changed')
         self.Hide()

@@ -1,7 +1,7 @@
 import wx
 
-from gui.errorWindow import errorFrame
-from gui.successWindow import successFrame
+from errorWindow import errorFrame
+from successWindow import successFrame
 
 
 class addGradeFrame(wx.Frame):

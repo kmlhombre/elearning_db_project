@@ -1,8 +1,7 @@
 import wx
-from gui.changePasswordWindow import changePasswordFrame
+from changePasswordWindow import changePasswordFrame
 
 from methods import get_subjects, display_grades
-from main import session
 
 
 class parentPanel(wx.Panel):
@@ -26,7 +25,7 @@ class parentPanel(wx.Panel):
         self.subjects = []
         # TODO tutaj funkcja ktora pobiera dane tj.
         # przedmioty
-        sub_tmp = get_subjects(session)
+        sub_tmp = get_subjects()
         for subject in sub_tmp:
             self.subjects.append(subject.name)
 
@@ -60,11 +59,10 @@ class parentPanel(wx.Panel):
         self.list_ctrl.DeleteAllItems()
         # wypelnianie tablicy
         self.list_ctrl.InsertItem(0, subject)  # gdzie 0 to indeks wiersza
-        grades = display_grades(session, self.logged_user_id, subject)
+        grades = display_grades(self.logged_user_id, subject)
         index = 0
         for grade in grades:
-            self.list_ctrl.SetItem(0, index,
-                                   str(grade.value))  # gdzie index to indeks kolumny a str(index) to wartość(ocena)
+            self.list_ctrl.SetItem(0, index, str(grade.value))  # gdzie index to indeks kolumny a str(index) to wartość(ocena)
             index += 1
 
 

@@ -1,12 +1,11 @@
 import wx
 
-from gui.errorWindow import errorFrame
-from gui.parentWindow import parentFrame
-from gui.studentWindow import studentFrame
-from gui.teacherWindow import teacherFrame
+from errorWindow import errorFrame
+from parentWindow import parentFrame
+from studentWindow import studentFrame
+from teacherWindow import teacherFrame
 
 from methods import login_user
-from main import session
 
 
 class loggingFrame(wx.Frame):
@@ -52,9 +51,9 @@ class loggingFrame(wx.Frame):
         password = self.text_ctrl2.GetValue()
 
         # tutaj potrzebna funkcja logujaca
-        user, logged_status = login_user(session, login, password)
+        user, logged_status = login_user(login, password)
 
-        if user.login == login:
+        if user is not None and user.login == login:
             is_logged = True
         # na potrzebny testowania
         # logged_user_id = 1

@@ -1,10 +1,9 @@
 import wx
 
-from gui.addGradeWindow import addGradeFrame
-from gui.changePasswordWindow import changePasswordFrame
+from addGradeWindow import addGradeFrame
+from changePasswordWindow import changePasswordFrame
 
 from methods import get_subjects, get_students, get_grades_of_student
-from main import session
 
 class teacherPanel(wx.Panel):
 
@@ -28,13 +27,13 @@ class teacherPanel(wx.Panel):
         #TODO tutaj funkcja ktora pobiera dane tj.
         #przedmioty
         self.subjects = []
-        sub_tmp = get_subjects(session)
+        sub_tmp = get_subjects()
         for subject in sub_tmp:
             self.subjects.append(subject.name)
         #uczniow i oceny pierwszego przedmiotu
         self.students = []
 
-        self.student_grades_class_subject = get_students(session, self.subjects[0])
+        self.student_grades_class_subject = get_students(self.subjects[0])
         for student in self.student_grades_class_subject:
             self.students.append((student.student_id, student.first_name + ' ' + student.surname))
 
@@ -89,9 +88,9 @@ class teacherPanel(wx.Panel):
         for student in self.students:
             self.list_ctrl.InsertItem(0, student) # gdzie 0 to indeks wiersza
             index = 0
-            grades = get_grades_of_student(session, subject, student[0])
+            grades = get_grades_of_student(subject, student[0])
             for grade in grades:
-                self.list_ctrl.SetItem(0, index, str(grades.Grade.value))
+                self.list_ctrl.SetItem(0, index, str(grade.Grade.value))
                 index += 1
         for index in range(1, 6):
             self.list_ctrl.SetItem(0, index, str(index)) # gdzie index to indeks kolumny a str(index) to wartość(ocena)

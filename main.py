@@ -2,14 +2,7 @@ import eyed3
 import glob
 import wx
 
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-
-from gui.loggingWindow import loggingFrame
-
-engine = create_engine("sqlite:///test.db", echo=True)
-Session = sessionmaker(bind=engine)
-session = Session()
+from loggingWindow import loggingFrame
 
 
 class EditDialog(wx.Dialog):

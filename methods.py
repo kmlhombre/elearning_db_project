@@ -1,9 +1,14 @@
 from models import Student, Teacher, Parent, Grade, Subject, Class
 from werkzeug.security import generate_password_hash, check_password_hash
-from sqlalchemy import func
+from sqlalchemy import func, create_engine
+from sqlalchemy.orm import sessionmaker
+
+engine = create_engine("sqlite:///test.db", echo=True)
+Session = sessionmaker(bind=engine)
+session = Session()
 
 
-def login_user(session, login, password):
+def login_user(login, password):
     l = session.query(Student).filter_by(login=login).first()
     logged_status = "Student"
     if l is None:
@@ -12,8 +17,8 @@ def login_user(session, login, password):
         if l is None:
             l = session.query(Parent).filter_by(login=login).first()
             logged_status = "Parent"
-        else:
-            return "Niepoprawny login lub hasło"
+            if l is None:
+                return None, None
 
     password = generate_password_hash(password)
     password_to_check = l.getPassword()
@@ -21,14 +26,14 @@ def login_user(session, login, password):
     if check_password_hash(password_to_check, password):
         return l, logged_status
     else:
-        return "Niepoprawny login lub hasło"
+        return None, None
 
 
 def logout(logged_user):
     logged_user = None
 
 
-def display_grades(session, login, subject):
+def display_grades(login, subject):
     l = session.query(Student).filter_by(login=login).first()
     if l is None:
         l = session.query(Teacher).filter_by(login=login).first()
@@ -37,7 +42,7 @@ def display_grades(session, login, subject):
     return session.query(Grade).join(Subject).filter_by(student_id=id, name=subject).all()
 
 
-def change_password(session, logged_user, password):
+def change_password(logged_user, password):
     new_password = generate_password_hash(password)
     login = logged_user.getLogin()
 
@@ -51,7 +56,7 @@ def change_password(session, logged_user, password):
     session.commit()
 
 
-def add_grade(session, logged_user):
+def add_grade(logged_user):
     subjects = session.query(Subject).filter_by(teacher_id=logged_user.getId()).all()
     if len(subjects) == 0:
         return "Blad systemu"
@@ -74,7 +79,7 @@ def add_grade(session, logged_user):
     session.commit()
 
 
-def edit_grade(session, logged_user):
+def edit_grade(logged_user):
     subjects = session.query(Subject).filter_by(teacher_id=logged_user.getId()).all()
     if len(subjects) == 0:
         return "Blad systemu"
@@ -159,7 +164,7 @@ def grade_menu(grades):
             return grade_id
 
 
-def display_classes_grades(session, logged_user):
+def display_classes_grades(logged_user):
     subjects = session.query(Subject).filter_by(teacher_id=logged_user.getId()).all()
     if len(subjects) == 0:
         return "Blad systemu"
@@ -172,7 +177,7 @@ def display_classes_grades(session, logged_user):
     return all_grades
 
 
-def mass_change_of_passwords(session):
+def mass_change_of_passwords():
     students = session.query(Student).all()
     for student in students:
         student.password = generate_password_hash(student.password)
@@ -188,13 +193,13 @@ def mass_change_of_passwords(session):
     session.commit()
 
 
-def get_subjects(session):
+def get_subjects():
     return session.query(Subject).all()
 
 
-def get_students(session, subject):
+def get_students(subject):
     sub = session.query(Subject).filter_by(name=subject).first()
     return session.query(Grade).join(Class).join(Subject).join(Student).filter(Subject.subject_id == sub.subject_id).all()
 
-def get_grades_of_student(session, subject, student_id):
+def get_grades_of_student(subject, student_id):
     return session.query(Grade).join(Class).join(Subject).join(Student).filter(Student.student_id == student_id, Subject.name == subject).all()
