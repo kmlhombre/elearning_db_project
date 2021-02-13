@@ -30,13 +30,14 @@ class teacherPanel(wx.Panel):
         self.subjects = []
         sub_tmp = get_subjects()
         for subject in sub_tmp:
-            self.subjects.append(subject.name)
+            self.subjects.append(subject.Subject.name + ' ' + subject.Class.name)
         #uczniow i oceny pierwszego przedmiotu
         self.students = []
+        self.student_grades_class_subject = None
 
-        self.student_grades_class_subject = get_students(self.subjects[0])
-        for student in self.student_grades_class_subject:
-            self.students.append((student.Student.student_id, student.Student.first_name + ' ' + student.Student.surname))
+        self.students_id = []
+        self.grades = []
+        self.student_data = []
 
         # dodawanie obiektow
         logout_button = wx.Button(self, label="Logout", size=(100, 50))
@@ -82,19 +83,32 @@ class teacherPanel(wx.Panel):
 
     def fill_table(self, subject):
         # TODO tutaj pobiera uczniow i oceny z wybranego przedmiotu i odswieza tabele
+        subject_tmp = subject.split(' ')
+        c = subject_tmp[1] + ' ' + subject_tmp[2]
+        self.students.clear()
+
+        self.student_grades_class_subject = get_students(self.subjects[0], c)
+
+        for student in self.student_grades_class_subject:
+            if student.Student.student_id in self.students_id:
+                self.grades[self.students_id.index(student.Student.student_id)].append(student.Grade.value)
+            else:
+                self.students_id.append(student.Student.student_id)
+                self.student_data.append(student.Student.first_name + ' ' + student.Student.surname)
+                tmp = [student.Grade.value]
+                self.grades.append(tmp)
+
         #czyszczenie tablicy
         self.list_ctrl.DeleteAllItems()
         #wypelnianie tablicy
         row = 0
-        for student in self.students:
-            self.list_ctrl.InsertItem(0, student) # gdzie 0 to indeks wiersza
+        for student in self.student_data:
+            self.list_ctrl.InsertItem(row, student)
             index = 0
-            grades = get_grades_of_student(subject, student[0])
-            for grade in grades:
-                self.list_ctrl.SetItem(0, index, str(grade.Grade.value))
+            for grade in self.grades[row]:
+                self.list_ctrl.SetItem(row, index, str(grade.value))
                 index += 1
-        for index in range(1, 6):
-            self.list_ctrl.SetItem(0, index, str(index)) # gdzie index to indeks kolumny a str(index) to wartość(ocena)
+            row += 1
 
 class teacherFrame(wx.Frame):
     def __init__(self, logged_user):

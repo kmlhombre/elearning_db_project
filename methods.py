@@ -173,12 +173,13 @@ def display_classes_grades(logged_user):
 
 
 def get_subjects():
-    return session.query(Subject).all()
+    return session.query(Subject, Class).join(Class).all()
 
 
-def get_students(subject):
+def get_students(subject, _class):
     sub = session.query(Subject).filter_by(name=subject).first()
-    return session.query(Grade).join(Subject).join(Class).join(Student).filter(Subject.subject_id == sub.subject_id).all()
+    _class_id = session.query(Class).filter_by(name=_class).first()
+    return session.query(Grade, Student).join(Subject).join(Class).join(Student).filter(Subject.subject_id == sub.subject_id, Subject.class_id == _class_id).all()
 
 
 def get_grades_of_student(subject, student_id):

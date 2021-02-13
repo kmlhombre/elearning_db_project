@@ -34,8 +34,7 @@
     <list default="true" id="7fa8f7e6-6b67-4995-b4b8-c2d1322ef7a6" name="Default Changelist" comment="add subject">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/methods.py" beforeDir="false" afterPath="$PROJECT_DIR$/methods.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parentWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/parentWindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/studentWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/studentWindow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teacherWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/teacherWindow.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +144,7 @@
       <workItem from="1613054372429" duration="7753000" />
       <workItem from="1613140552684" duration="3815000" />
       <workItem from="1613208730766" duration="530000" />
-      <workItem from="1613228775508" duration="3317000" />
+      <workItem from="1613228775508" duration="5446000" />
     </task>
     <servers />
   </component>
