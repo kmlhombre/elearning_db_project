@@ -32,16 +32,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce814996-b10c-4012-87b3-20025d6a341b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/test/changePassword.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/addGradeWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/addGradeWindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/changePasswordWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/changePasswordWindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/errorWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/errorWindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/loggingWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/loggingWindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/parentWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/parentWindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/studentWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/studentWindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/successWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/successWindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/teacherWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/teacherWindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/methods.py" beforeDir="false" afterPath="$PROJECT_DIR$/methods.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -126,7 +118,8 @@
       <workItem from="1612620057811" duration="14949000" />
       <workItem from="1612968930784" duration="1196000" />
       <workItem from="1613054372429" duration="7753000" />
-      <workItem from="1613140552684" duration="3706000" />
+      <workItem from="1613140552684" duration="3815000" />
+      <workItem from="1613208730766" duration="530000" />
     </task>
     <servers />
   </component>
@@ -150,26 +143,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="739" y="262" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1612969039578" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1613145403172">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1613145522813">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613145203795" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1613145403172" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1613145403172">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1613145522813" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1613145522813">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613145203794" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1613145403172" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1613145403172">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1613145522813" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1613145522813">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613145203793" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1613145403172" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1613145403172">
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1613145522813" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1613145522813">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1613145203795" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1613145403172" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1613145522813" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1612972161328">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
