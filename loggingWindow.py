@@ -49,7 +49,7 @@ class loggingFrame(wx.Frame):
         # TODO zrobic funkcje ktora loguje uzytkownika
         login = self.text_ctrl1.GetValue()
         password = self.text_ctrl2.GetValue()
-
+        print(password)
         # tutaj potrzebna funkcja logujaca
         user, logged_status = login_user(login, password)
 

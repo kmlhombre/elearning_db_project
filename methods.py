@@ -3,7 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy import func, create_engine
 from sqlalchemy.orm import sessionmaker
 
-engine = create_engine("sqlite:///test.db", echo=True)
+engine = create_engine("postgresql://postgres:password@127.0.0.1:5432/elearningDB", echo=True)
 Session = sessionmaker(bind=engine)
 session = Session()
 
@@ -19,10 +19,7 @@ def login_user(login, password):
             logged_status = "Parent"
             if l is None:
                 return None, None
-
-    password = generate_password_hash(password)
     password_to_check = l.getPassword()
-
     if check_password_hash(password_to_check, password):
         return l, logged_status
     else:
@@ -44,7 +41,7 @@ def display_grades(login, subject):
 
 def change_password(logged_user, password):
     new_password = generate_password_hash(password)
-    login = logged_user.getLogin()
+    login = logged_user
 
     l = session.query(Student).filter_by(login=login).first()
     if l is None:
@@ -183,8 +180,8 @@ def get_subjects():
 
 def get_students(subject):
     sub = session.query(Subject).filter_by(name=subject).first()
-    return session.query(Grade).join(Class).join(Subject).join(Student).filter(Subject.subject_id == sub.subject_id).all()
+    return session.query(Grade).join(Subject).join(Class).join(Student).filter(Subject.subject_id == sub.subject_id).all()
 
 
 def get_grades_of_student(subject, student_id):
-    return session.query(Grade).join(Class).join(Subject).join(Student).filter(Student.student_id == student_id, Subject.name == subject).all()
+    return session.query(Grade).join(Subject).join(Class).join(Student).filter(Student.student_id == student_id, Subject.name == subject).all()

@@ -35,7 +35,7 @@ class teacherPanel(wx.Panel):
 
         self.student_grades_class_subject = get_students(self.subjects[0])
         for student in self.student_grades_class_subject:
-            self.students.append((student.student_id, student.first_name + ' ' + student.surname))
+            self.students.append((student.Student.student_id, student.Student.first_name + ' ' + student.Student.surname))
 
         # dodawanie obiektow
         logout_button = wx.Button(self, label="Logout", size=(100, 50))

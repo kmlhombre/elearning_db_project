@@ -29,8 +29,8 @@ class studentPanel(wx.Panel):
         for subject in sub_tmp:
             self.subjects.append(subject.name)
 
+        #self.fill_table()
 
-        # self.subjects = ["Math", "IT", "..."]
         # dodawanie obiektow
         logout_button = wx.Button(self, label="Logout", size=(100, 50))
         logout_button.SetBackgroundColour('orange')
