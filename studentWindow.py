@@ -29,7 +29,7 @@ class studentPanel(wx.Panel):
         for subject in sub_tmp:
             self.subjects.append(subject.name)
 
-        temp = display_grades(self.logged_user_id)
+        temp = display_grades(self.logged_user_id, "Student")
         self.subjects_name = []
         self.grades = []
 

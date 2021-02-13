@@ -26,11 +26,15 @@ def login_user(login, password):
         return None, None
 
 
-def display_grades(login):
-    l = session.query(Student).filter_by(login=login).first()
-    id = l.getId()
+def display_grades(login, logged_type):
+    if logged_type == 'Parent':
+        l = session.query(Parent).filter_by(login=login).first()
+        id_student = l.student_id
+    elif logged_type == 'Student':
+        l = session.query(Student).filter_by(login=login).first()
+        id_student = l.getId()
 
-    return session.query(Grade, Subject).join(Subject).filter_by(student_id=id).all()
+    return session.query(Grade, Subject).join(Subject).filter_by(student_id=id_student).all()
 
 
 def change_password(logged_user, password):
