@@ -177,22 +177,6 @@ def display_classes_grades(logged_user):
     return all_grades
 
 
-def mass_change_of_passwords():
-    students = session.query(Student).all()
-    for student in students:
-        student.password = generate_password_hash(student.password)
-
-    parents = session.query(Parent).all()
-    for parent in parents:
-        parent.password = generate_password_hash(parent.password)
-
-    teachers = session.query(Teacher).all()
-    for teacher in teachers:
-        teacher.password = generate_password_hash(teacher.password)
-
-    session.commit()
-
-
 def get_subjects():
     return session.query(Subject).all()
 
@@ -200,6 +184,7 @@ def get_subjects():
 def get_students(subject):
     sub = session.query(Subject).filter_by(name=subject).first()
     return session.query(Grade).join(Class).join(Subject).join(Student).filter(Subject.subject_id == sub.subject_id).all()
+
 
 def get_grades_of_student(subject, student_id):
     return session.query(Grade).join(Class).join(Subject).join(Student).filter(Student.student_id == student_id, Subject.name == subject).all()
