@@ -29,6 +29,18 @@ class studentPanel(wx.Panel):
         for subject in sub_tmp:
             self.subjects.append(subject.name)
 
+        temp = display_grades(self.logged_user_id)
+        self.subjects_name = []
+        self.grades = []
+
+        for grade in temp:
+            if grade.Subject.name in self.subjects_name:
+                self.grades[self.subjects_name.index(grade.Subject.name)].append(grade.Grade.value)
+            else:
+                self.subjects_name.append(grade.Subject.name)
+                tmp = [grade.Grade.value]
+                self.grades.append(tmp)
+
         #self.fill_table()
 
         # dodawanie obiektow
@@ -54,17 +66,19 @@ class studentPanel(wx.Panel):
     def on_press_logout(self, event):
         exit()
 
-    def fill_table(self, subject):
+    def fill_table(self):
         # TODO tutaj pobiera uczniow i oceny z wybranego przedmiotu i odswieza tabele
         # czyszczenie tablicy
         self.list_ctrl.DeleteAllItems()
         # wypelnianie tablicy
-        self.list_ctrl.InsertItem(0, subject)  # gdzie 0 to indeks wiersza
-        grades = display_grades(self.logged_user_id, subject)
-        index = 0
-        for grade in grades:
-            self.list_ctrl.SetItem(0, index, str(grade.value))  # gdzie index to indeks kolumny a str(index) to wartość(ocena)
-            index += 1
+        row = 0
+        for subject in self.subjects_name:
+            self.list_ctrl.InsertItem(row, subject)  # gdzie 0 to indeks wiersza
+            index = 0
+            for grade in self.grades[row]:
+                self.list_ctrl.SetItem(row, index, str(grade.value))  # gdzie index to indeks kolumny a str(index) to wartość(ocena)
+                index += 1
+            row += 1
 
 
 class studentFrame(wx.Frame):

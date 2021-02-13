@@ -35,12 +35,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/elearning_db_project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/elearning_db_project.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loggingWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/loggingWindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/methods.py" beforeDir="false" afterPath="$PROJECT_DIR$/methods.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/studentWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/studentWindow.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/teacherWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/teacherWindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/changePassword.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/changePassword.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +92,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/changePassword.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -138,7 +136,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ce814996-b10c-4012-87b3-20025d6a341b" name="Default Changelist" comment="" />
+      <changelist id="7fa8f7e6-6b67-4995-b4b8-c2d1322ef7a6" name="Default Changelist" comment="add subject" />
       <created>1612619372675</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -149,6 +147,7 @@
       <workItem from="1613054372429" duration="7753000" />
       <workItem from="1613140552684" duration="3815000" />
       <workItem from="1613208730766" duration="530000" />
+      <workItem from="1613228775508" duration="2443000" />
     </task>
     <servers />
   </component>
@@ -166,5 +165,11 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="165" y="-22" width="1345" height="1027" maximized="true" key="dock-window-1" timestamp="1613228826024">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="165" y="-22" width="1345" height="1027" maximized="true" key="dock-window-1/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1613228826024" />
   </component>
 </project>

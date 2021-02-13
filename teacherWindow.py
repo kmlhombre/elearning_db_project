@@ -5,6 +5,7 @@ from changePasswordWindow import changePasswordFrame
 
 from methods import get_subjects, get_students, get_grades_of_student
 
+
 class teacherPanel(wx.Panel):
 
     def __init__(self, parent, logged_user):
