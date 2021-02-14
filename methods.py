@@ -53,7 +53,9 @@ def change_password(logged_user, password):
 
 def add_grade(student_id, subject_id, value):
     id_grade = max_grade_id().one().max_id
-    val = int(value)
+    val = float(value)
+    if 6 < val or val < 1:
+        return False
     grade = Grade(grade_id=id_grade+1, student_id=student_id, subject_id=subject_id, value=float(val))
     session.add(grade)
     session.commit()
@@ -164,6 +166,12 @@ def display_classes_grades(logged_user):
 
 def get_subjects():
     return session.query(Subject, Class).join(Class).all()
+
+
+def get_subjects_for_teacher(teacher):
+    l = session.query(Teacher).filter_by(login=teacher).first()
+    id_teacher = l.getId()
+    return session.query(Subject, Class).join(Teacher).filter(Teacher.teacher_id == id_teacher).join(Class).all()
 
 
 def get_students(subject, _class):

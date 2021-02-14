@@ -27,4 +27,4 @@ class errorFrame(wx.Frame):
         self.Show()
 
     def on_press(self, event):
-        self.Hide()
+        self.Close()

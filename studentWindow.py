@@ -23,7 +23,7 @@ class studentPanel(wx.Panel):
             self.list_ctrl.SetColumnWidth(index, 60)
 
         self.subjects = []
-        # TODO tutaj funkcja ktora pobiera dane tj.
+
         # przedmioty
         sub_tmp = get_subjects()
         for subject in sub_tmp:
@@ -48,17 +48,25 @@ class studentPanel(wx.Panel):
         logout_button.SetBackgroundColour('orange')
         change_password_button = wx.Button(self, label="Change Password", size=(100, 50))
         change_password_button.SetBackgroundColour('pink')
+        refresh_button = wx.Button(self, label="Refresh", size=(100, 50))
+        refresh_button.SetBackgroundColour('green')
 
         # akcje obiektorw
         logout_button.Bind(wx.EVT_BUTTON, self.on_press_logout)
         change_password_button.Bind(wx.EVT_BUTTON, self.on_press_chngpass)
+        refresh_button.Bind(wx.EVT_BUTTON, self.on_press_refresh)
 
         # rozmieszczenie obiektow
         main_sizer.Add(self.list_ctrl, pos=(1, 1), flag=wx.EXPAND | wx.ALL)
-        main_sizer.Add(change_password_button, pos=(1, 2))
-        main_sizer.Add(logout_button, pos=(1, 3))
+        main_sizer.Add(change_password_button, pos=(1, 3))
+        main_sizer.Add(logout_button, pos=(1, 4))
+        main_sizer.Add(refresh_button, pos=(1, 2))
 
         self.SetSizer(main_sizer)
+
+    def on_press_refresh(self, evt):
+        print("UPDATE")
+        self.fill_table()
 
     def on_press_chngpass(self, event):
         changePasswordFrame(self.logged_user_id)
@@ -67,7 +75,6 @@ class studentPanel(wx.Panel):
         exit()
 
     def fill_table(self):
-        # TODO tutaj pobiera uczniow i oceny z wybranego przedmiotu i odswieza tabele
         # czyszczenie tablicy
         self.list_ctrl.DeleteAllItems()
         # wypelnianie tablicy
@@ -84,6 +91,6 @@ class studentPanel(wx.Panel):
 class studentFrame(wx.Frame):
     def __init__(self, logged_user):
         super().__init__(parent=None, title="elearning Student")
-        self.SetSize(1280, 720)
+        self.SetSize(1440, 720)
         self.panel = studentPanel(self, logged_user=logged_user)
         self.Show()

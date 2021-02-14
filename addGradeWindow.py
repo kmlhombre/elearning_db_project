@@ -1,5 +1,6 @@
 import wx
 
+import teacherWindow
 from errorWindow import errorFrame
 from successWindow import successFrame
 
@@ -57,13 +58,13 @@ class addGradeFrame(wx.Frame):
         # TODO add grades to the database. Call proper function.
         # TODO get response message?
 
-        if add_grade(student_tmp[0], self.subject, grade):
-            isGradeAdded = True
+        isGradeAdded = add_grade(student_tmp[0], self.subject, grade)
+
 
         # Mock - to replacec
         b = event.GetEventObject()
         print(b.GetLabel(), "Add grade success")
-        self.Hide()
+        self.Close()
 
         if isGradeAdded:
             successFrame('Successfully added a grade!')
