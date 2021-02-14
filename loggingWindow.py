@@ -27,7 +27,7 @@ class loggingFrame(wx.Frame):
 
         # elementy zawarte w oknie
         self.text_ctrl1 = wx.TextCtrl(panel)
-        self.text_ctrl2 = wx.TextCtrl(panel)
+        self.text_ctrl2 = wx.TextCtrl(panel, style=wx.TE_PASSWORD|wx.TE_PROCESS_ENTER)
 
         my_btn = wx.Button(panel, label='Log in', pos=(20, 20), size=(300, 50))
 

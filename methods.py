@@ -34,7 +34,7 @@ def display_grades(login, logged_type):
         l = session.query(Student).filter_by(login=login).first()
         id_student = l.getId()
 
-    return session.query(Grade, Subject).join(Subject).filter_by(student_id=id_student).all()
+    return session.query(Grade, Subject).join(Subject).join(Student).filter_by(student_id=id_student).all()
 
 
 def change_password(logged_user, password):
