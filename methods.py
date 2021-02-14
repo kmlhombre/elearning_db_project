@@ -179,7 +179,7 @@ def get_subjects():
 def get_students(subject, _class):
     sub = session.query(Subject).filter_by(name=subject).first()
     _class_id = session.query(Class).filter_by(name=_class).first()
-    return session.query(Grade, Student).join(Subject).join(Class).join(Student).filter(Subject.subject_id == sub.subject_id, Subject.class_id == _class_id).all()
+    return session.query(Grade, Student).join(Subject).join(Class).join(Student).filter(Subject.subject_id == sub.subject_id, Subject.class_id == _class_id.class_id).all()
 
 
 def get_grades_of_student(subject, student_id):
