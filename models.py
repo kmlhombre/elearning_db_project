@@ -96,7 +96,7 @@ class Grade(Base):
     value = Column(Integer, nullable=True)
 
     def __repr__(self):
-        return "<Grade {}>".format(self.value)
+        return "<Grade {} {}>".format(self.grade_id, self.value)
 
 
 class Subject(Base):

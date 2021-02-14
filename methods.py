@@ -51,27 +51,17 @@ def change_password(logged_user, password):
     session.commit()
 
 
-def add_grade(logged_user):
-    subjects = session.query(Subject).filter_by(teacher_id=logged_user.getId()).all()
-    if len(subjects) == 0:
-        return "Blad systemu"
-
-    sub_id = subject_menu(subjects)
-    classes = session.query(Subject).join(Class).filter_by(subject_id=sub_id).all()
-    class_id = classes_menu(classes)
-    students = session.query(Student).filter_by(class_id=class_id).all()
-    student_id = student_menu(students)
-    max_id_grade = session.query(func.max(Grade.grade_id))
-
-    print("Wpisz ocene: ")
-
-    value = 0
-    while value < 1 or value > 6:
-        value = int(input())
-
-    grade = Grade(grade_id=max_id_grade+1, student_id=student_id, subject_id=sub_id, value=value)
+def add_grade(student_id, subject_id, value):
+    id_grade = max_grade_id().one().max_id
+    val = int(value)
+    grade = Grade(grade_id=id_grade+1, student_id=student_id, subject_id=subject_id, value=float(val))
     session.add(grade)
     session.commit()
+    return True
+
+
+def max_grade_id():
+    return session.query(func.max(Grade.grade_id).label("max_id"))
 
 
 def edit_grade(logged_user):
@@ -177,10 +167,16 @@ def get_subjects():
 
 
 def get_students(subject, _class):
-    sub = session.query(Subject).filter_by(name=subject).first()
-    _class_id = session.query(Class).filter_by(name=_class).first()
-    return session.query(Grade, Student).join(Subject).join(Class).join(Student).filter(Subject.subject_id == sub.subject_id, Subject.class_id == _class_id.class_id).all()
+    _class_id = session.query(Class).filter(Class.name ==_class).first()
+    sub = session.query(Subject).filter(Subject.name == subject, Subject.class_id == _class_id.class_id).first()
+    #return session.query(Student, Grade).join(Class).join(Subject).join(Grade).filter(Subject.subject_id == sub.subject_id, Subject.class_id == _class_id.class_id).group_by(Grade.grade_id).all()
+    return session.query(Student).select_from(Student).join(Class).join(Subject).filter(Subject.subject_id == sub.subject_id, Subject.class_id == _class_id.class_id).all()
 
 
 def get_grades_of_student(subject, student_id):
-    return session.query(Grade).join(Subject).join(Class).join(Student).filter(Student.student_id == student_id, Subject.name == subject).all()
+    return session.query(Grade).distinct(Grade.grade_id).join(Subject).join(Class).join(Student).filter(Grade.student_id == student_id, Subject.subject_id == subject).all()
+
+
+def get_subject_id(subject, c):
+    _class_id = session.query(Class).filter(Class.name == c).first()
+    return session.query(Subject).filter(Subject.name == subject, Subject.class_id == _class_id.class_id).first()

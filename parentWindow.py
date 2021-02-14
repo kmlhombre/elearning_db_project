@@ -27,7 +27,7 @@ class parentPanel(wx.Panel):
         # przedmioty
         sub_tmp = get_subjects()
         for subject in sub_tmp:
-            self.subjects.append(subject.name)
+            self.subjects.append(subject.Subject.name)
 
         temp = display_grades(self.logged_user_id, "Parent")
         self.subjects_name = []
@@ -40,6 +40,8 @@ class parentPanel(wx.Panel):
                 self.subjects_name.append(grade.Subject.name)
                 tmp = [grade.Grade.value]
                 self.grades.append(tmp)
+
+        self.fill_table()
 
         # dodawanie obiektow
         logout_button = wx.Button(self, label="Logout", size=(100, 50))
@@ -74,7 +76,7 @@ class parentPanel(wx.Panel):
             self.list_ctrl.InsertItem(row, subject)  # gdzie 0 to indeks wiersza
             index = 0
             for grade in self.grades[row]:
-                self.list_ctrl.SetItem(row, index, str(grade.value))  # gdzie index to indeks kolumny a str(index) to wartość(ocena)
+                self.list_ctrl.SetItem(row, index+1, str(grade))  # gdzie index to indeks kolumny a str(index) to wartość(ocena)
                 index += 1
             row += 1
 

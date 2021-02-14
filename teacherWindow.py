@@ -3,7 +3,7 @@ import wx
 from addGradeWindow import addGradeFrame
 from changePasswordWindow import changePasswordFrame
 
-from methods import get_subjects, get_students, get_grades_of_student
+from methods import get_subjects, get_students, get_grades_of_student, get_subject_id
 
 
 class teacherPanel(wx.Panel):
@@ -21,7 +21,7 @@ class teacherPanel(wx.Panel):
         self.list_ctrl.InsertColumn(0, "Subject", width=140)
         self.list_ctrl.SetColumnWidth(0, 120)
         self.list_ctrl.SetScrollbar(wx.HORIZONTAL, 0, 16, 50)
-        for index in range(1, 20):
+        for index in range(1, 50):
             self.list_ctrl.InsertColumn(index, "Grade", width=60)
             self.list_ctrl.SetColumnWidth(index, 60)
 
@@ -79,37 +79,57 @@ class teacherPanel(wx.Panel):
         exit()
 
     def on_add_grade(self, event):
-        addGradeFrame(students=self.students)
+        subject_tmp = self.subjects[self.subject_choice.GetCurrentSelection()].split(' ')
+        s = ' '.join(subject_tmp[:-2])
+        c = ' '.join(subject_tmp[-2:])
+        sub_id = get_subject_id(s, c)
+
+        addGradeFrame(students=self.students, subject=sub_id.subject_id)
         self.fill_table(self.subjects[self.subject_choice.GetCurrentSelection()]) #odswiezenie tablicy
 
     def fill_table(self, subject):
         # TODO tutaj pobiera uczniow i oceny z wybranego przedmiotu i odswieza tabele
         subject_tmp = subject.split(' ')
-        c = subject_tmp[1] + ' ' + subject_tmp[2]
+        s = ' '.join(subject_tmp[:-2])
+        c = ' '.join(subject_tmp[-2:])
         self.students.clear()
+        self.students_id.clear()
+        self.student_data.clear()
 
-        self.student_grades_class_subject = get_students(subject_tmp[0], c)
+        self.student_grades_class_subject = get_students(s, c)
 
-        for student in self.student_grades_class_subject:
-            if student.Student.student_id in self.students_id:
+        '''for student in self.student_grades_class_subject:
+            if student.student_id in self.students_id:
                 self.grades[self.students_id.index(student.Student.student_id)].append(student.Grade.value)
             else:
-                self.students_id.append(student.Student.student_id)
-                self.student_data.append(student.Student.first_name + ' ' + student.Student.surname)
-                tmp = [student.Grade.value]
+                self.students_id.append(student.student_id)
+                self.student_data.append(student.first_name + ' ' + student.surname)
+                tmp = [student.value]
                 self.grades.append(tmp)
-
-        #czyszczenie tablicy
+                self.grades[self.students_id.index(student.student_id)].append(student.value - 1)'''
+        # czyszczenie tablicy
         self.list_ctrl.DeleteAllItems()
-        #wypelnianie tablicy
+
         row = 0
-        print(self.grades[0])
+        sub_id = get_subject_id(s, c)
+        print(self.student_grades_class_subject)
+        for student in self.student_grades_class_subject:
+            index = 0
+            s_temp = get_grades_of_student(sub_id.subject_id, student.student_id)
+            self.students.append([student.student_id, student.first_name, student.surname])
+            self.list_ctrl.InsertItem(row, (student.first_name + ' ' + student.surname))
+            for grade in s_temp:
+                self.list_ctrl.SetItem(row, index+1, str(grade.value))
+                index += 1
+            row += 1
+        #wypelnianie tablicy
+        '''row = 0
         for i in range(len(self.students_id)):
             self.list_ctrl.InsertItem(i, self.student_data[i])
             index = 0
             for grade in self.grades[i]:
                 self.list_ctrl.SetItem(i, index+1, str(grade))
-            index += 1
+                index += 1'''
         """for student in self.student_data:
             self.list_ctrl.InsertItem(row, student)
             index = 0

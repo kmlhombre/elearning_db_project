@@ -3,10 +3,12 @@ import wx
 from errorWindow import errorFrame
 from successWindow import successFrame
 
+from methods import add_grade
+
 
 class addGradeFrame(wx.Frame):
 
-    def __init__(self, students):
+    def __init__(self, students, subject):
         super().__init__(parent=None, title="Add Grade")
         self.SetSize(400, 300)
         self.SetBackgroundColour('pink')
@@ -20,10 +22,18 @@ class addGradeFrame(wx.Frame):
 
         self.SetSizer(sizer)
 
-        self.choice = wx.Choice(panel, choices=students)
+        self.students = students
+        self.subject = subject
+        new_choices = []
+        for s in self.students:
+            new_choices.append(s[1] + ' ' + s[2])
+
+        self.choice = wx.Choice(panel, choices=new_choices)
         self.text_ctrl3 = wx.TextCtrl(panel)
 
         my_btn = wx.Button(panel, label='Confirm', pos=(20, 20), size=(300, 50))
+
+
 
         # akcje obiektow
         self.choice.SetSelection(0)
@@ -39,13 +49,17 @@ class addGradeFrame(wx.Frame):
         self.Show()
 
     def on_press(self, event):
-
-        # TODO update z Jędrzejem
         grade = self.text_ctrl3.GetValue()
+        student = self.choice.GetCurrentSelection()
+        student_tmp = self.students[student]
 
+        isGradeAdded = False
         # TODO add grades to the database. Call proper function.
         # TODO get response message?
-        isGradeAdded = False
+
+        if add_grade(student_tmp[0], self.subject, grade):
+            isGradeAdded = True
+
         # Mock - to replacec
         b = event.GetEventObject()
         print(b.GetLabel(), "Add grade success")
